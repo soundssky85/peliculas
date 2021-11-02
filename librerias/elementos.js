@@ -36,6 +36,7 @@ var vm1 = new Vue({
 	el:'#formulario',
 	data: {
 		nombre: '',
+		descripcion: '',
 		ruta_caratula: '',
 		hora: '',
 		minuto: '',
@@ -59,7 +60,7 @@ var vm1 = new Vue({
 		dataTable:"",
 		categoriafiltrada:"",
 		fechaverifica:[],
-		rating:0,
+		rate:0,
 		id_peli:0
 	},
 	methods:{
@@ -70,7 +71,7 @@ var vm1 = new Vue({
      let formData = new FormData();
 
 
-     if(!this.checkboxpe || !this.file || !this.nombre || !this.rutatrailer || !this.fecha_estreno){
+     if(!this.checkboxpe || !this.file || !this.nombre || !this.descripcion || !this.rutatrailer || !this.fecha_estreno){
      	
      	alert("Los campos para ingresar la pelicula estan incompletos.");
      	return false;
@@ -116,6 +117,7 @@ var vm1 = new Vue({
 
 	     formData.append('file', this.file);
 	     formData.append("nombre", this.nombre);
+	     formData.append("descripcion", this.descripcion);
 	     formData.append("duracion",this.duracion);
 	     formData.append("rutatrailer", this.rutatrailer);
 	     formData.append("fecha_estreno", this.fecha_estreno);
@@ -188,7 +190,7 @@ var vm1 = new Vue({
 
 		       this.totalpeliculas=response.body;
 
-		       console.log(this.totalpeliculas);
+		       //console.log(this.totalpeliculas);
 
 		     }, function(){
 			        console.log('Error!');
@@ -197,7 +199,11 @@ var vm1 = new Vue({
 		},
 		setRating: function(rating){
 
-      this.rating= rating;
+      this.rating = rating;
+
+      //alert(this.rating);
+
+			//alert(this.rating);
 
       /*let formData = new FormData();
 

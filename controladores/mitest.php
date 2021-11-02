@@ -32,7 +32,7 @@ $peliculaporcategoria = Capsule::table('peliculaporcategoria');
 if (!$_POST) {
 
 	echo json_encode($pelicula->join("peliculaporcategoria", "pelicula.id_pelicula", "=", "peliculaporcategoria.id_pelicula")->join("categoria", "peliculaporcategoria.id_categoria", "=", "categoria.id_categoria")->groupBy("pelicula.id_pelicula")
-			->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
+			->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.descripcion", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
 			->selectRaw('GROUP_CONCAT(categoria.nombre) as catenombre')
 			->get());
 
@@ -45,14 +45,14 @@ if (!$_POST) {
 		if ($id_categoria != 5) {
 
 			echo json_encode($pelicula->join("peliculaporcategoria", "pelicula.id_pelicula", "=", "peliculaporcategoria.id_pelicula")->join("categoria", "peliculaporcategoria.id_categoria", "=", "categoria.id_categoria")->where("categoria.id_categoria", $id_categoria)->groupBy("pelicula.id_pelicula")
-					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
+					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.descripcion", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
 					->selectRaw('GROUP_CONCAT(categoria.nombre) as catenombre')
 					->get());
 
 		} else {
 
 			echo json_encode($pelicula->join("peliculaporcategoria", "pelicula.id_pelicula", "=", "peliculaporcategoria.id_pelicula")->join("categoria", "peliculaporcategoria.id_categoria", "=", "categoria.id_categoria")->groupBy("pelicula.id_pelicula")
-					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
+					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.descripcion", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
 					->selectRaw('GROUP_CONCAT(categoria.nombre) as catenombre')
 					->get());
 
@@ -74,7 +74,7 @@ if (!$_POST) {
 
 		$rutacaratula = "images/" . $filename;
 
-		$id = $pelicula->insertGetId(["nombre" => $_POST['nombre'], "ruta_caratula" => $rutacaratula, "duracion" => $_POST['duracion'], "rutatrailer" => $_POST['rutatrailer'], "fecha_estreno" => $_POST['fecha_estreno']]);
+		$id = $pelicula->insertGetId(["nombre" => $_POST['nombre'], "descripcion" => $_POST['descripcion'], "ruta_caratula" => $rutacaratula, "duracion" => $_POST['duracion'], "rutatrailer" => $_POST['rutatrailer'], "fecha_estreno" => $_POST['fecha_estreno']]);
 
 		$esto = explode(',', $_POST['checkboxpe']);
 
@@ -92,7 +92,7 @@ if (!$_POST) {
 		if ($pelicula->where('id_pelicula', $id_pelicula)->update(['visto' => $nuevavista])) {
 
 			echo json_encode($pelicula1->join("peliculaporcategoria", "pelicula.id_pelicula", "=", "peliculaporcategoria.id_pelicula")->join("categoria", "peliculaporcategoria.id_categoria", "=", "categoria.id_categoria")->groupBy("pelicula.id_pelicula")
-					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
+					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.descripcion", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
 					->selectRaw('GROUP_CONCAT(categoria.nombre) as catenombre')
 					->get());
 

@@ -3,10 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- <link rel="stylesheet" href="librerias/estilos.css"> -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-	<link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+	<link rel="stylesheet" href="librerias/bootstrap.min.css">
+	<link rel="stylesheet" href="librerias/dataTables.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 </head>
@@ -71,6 +70,14 @@
 							<label for="">Nombre</label>
 							<input type="text" placeholder="Crear" v-model="nombre" class="form-control">
 						</div>
+
+						<div class="col-md-12">
+							<label for="">Descripción</label>
+							<textarea class="form-control" v-model="descripcion">
+
+							</textarea>
+						</div>
+
 						<div class="col-md-12">
 							<label for="">Ingresar caratula</label>
 							<div class="custom-file">
@@ -185,6 +192,7 @@
 										<th>Id</th>
 										<th>Nombre</th>
 										<th>Caratula</th>
+										<th>Descripción</th>
 										<th>Duración</th>
 										<th>Trailer</th>
 										<th>Fecha</th>
@@ -199,13 +207,14 @@
 							  	<td>{{pelicula.id_pelicula}}</td>
 							    <td>{{pelicula.nombre}}</td>
 							    <td><img v-bind:src="pelicula.ruta_caratula"></td>
+							    <td>{{pelicula.descripcion}}</td>
 							    <td>{{pelicula.duracion}}</td>
 							    <td><a v-bind:href="pelicula.rutatrailer" title="Ver trailer" target="_blank" class="trailer"><i class="fas fa-film"></i></a></td>
 							    <td>{{pelicula.fecha_estreno}}</td>
 							    <td>{{pelicula.catenombre}}</td>
 							    <td><p style="cursor:pointer;" @click="agvisto(pelicula.id_pelicula,pelicula.visto)"><i class="fas fa-check" style="color:#A1260B"></i></p></td>
 							    <td>Vista por {{pelicula.visto}}</td>
-							    <td><star-rating :increment="0.5" v-model="pelicula.id_pelicula" :star-size="17" @rating-selected="setRating" :value="pelicula.id_pelicula"></star-rating></td>
+							    <td><star-rating :increment="0.5" :star-size="17" @rating-selected="setRating"></star-rating></td>
 							  </tr>
 							  </tbody>
 							</table>
@@ -221,13 +230,13 @@
 		<p>{{$data}}</p>
 	</main> -->
 </body>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="https://unpkg.com/vue-star-rating/dist/VueStarRating.umd.min.js"></script>
+	<script src="librerias/jquery-3.6.0.min.js"></script>
+	<script src="librerias/bootstrap.min.js"></script>
+	<script src="librerias/jquery.dataTables.min.js"></script>
+	<script src="librerias/vue.js"></script>
+	<script src="librerias/vue-resource@1.3.5.js"></script>
+	<script src="librerias/axios.min.js"></script>
+	<script src="librerias/VueStarRating.umd.min.js"></script>
 	<script src="librerias/elementos.js"></script>
 
 	<script>
