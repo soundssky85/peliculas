@@ -178,13 +178,23 @@
 						<div class="col-md-12">
 							<h1>- Listado general de peliculas -</h1>
 						</div>
-						<div class="col-md-6">
-							<label for="">Categorias</label>
-							<select v-model="categoriafiltrada" class="form-control" @change="filtracategoria()">
-								<option value="5"></option>
-								<option v-for="(value,key) in categorias" :value="key">{{value}}</option>
-							</select>
+						<div class="row">
+							<div class="col-md-6">
+								<label for="">Categorias</label>
+								<select v-model="categoriafiltrada" class="form-control" @change="filtracategoria()">
+									<option value="5">Todas las categorías</option>
+									<option v-for="(value,key) in categorias" :value="key">{{value}}</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="">Nombres</label>
+								<select v-model="nombrefiltrado" class="form-control" @change="filtranombre()">
+									<option value="todonombre">Todas las peliculas</option>
+									<option v-for="(value,key) in nombres" :value="value">{{value}}</option>
+								</select>
+							</div>
 						</div>
+						<label for=""></label>
 						<div class="col-md-12">
 							<table id="data_table">
 								<thead>

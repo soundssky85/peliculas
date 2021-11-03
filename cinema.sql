@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2021 a las 02:06:22
+-- Tiempo de generación: 03-11-2021 a las 04:18:07
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.3
 
@@ -77,7 +77,7 @@ CREATE TABLE `pelicula` (
 --
 
 INSERT INTO `pelicula` (`id_pelicula`, `nombre`, `descripcion`, `ruta_caratula`, `duracion`, `rutatrailer`, `fecha_estreno`, `visto`) VALUES
-(10, 'No time to die', 'Primera desc', 'images/No-Time-To-Die-miaminews24-1.png', '02:48:00', 'https://www.youtube.com/watch?v=BIhNsAtPbPI&t=58s', '2021-10-18', 63);
+(10, 'No time to die', 'Primera desc', 'images/No-Time-To-Die-miaminews24-1.png', '02:48:00', 'https://www.youtube.com/watch?v=BIhNsAtPbPI&t=58s', '2021-10-18', 65);
 
 -- --------------------------------------------------------
 
@@ -150,13 +150,13 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `pelicula`
 --
 ALTER TABLE `pelicula`
-  MODIFY `id_pelicula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id_pelicula` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculaporcategoria`
 --
 ALTER TABLE `peliculaporcategoria`
-  MODIFY `id_peliculaporcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_peliculaporcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- Restricciones para tablas volcadas

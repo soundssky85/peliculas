@@ -98,6 +98,26 @@ if (!$_POST) {
 
 		}
 
+	} else if ($_POST && $_POST['nombre']) {
+
+		$nombre = $_POST["nombre"];
+
+		if ($nombre == "todonombre") {
+
+			echo json_encode($pelicula->join("peliculaporcategoria", "pelicula.id_pelicula", "=", "peliculaporcategoria.id_pelicula")->join("categoria", "peliculaporcategoria.id_categoria", "=", "categoria.id_categoria")->groupBy("pelicula.id_pelicula")
+					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.descripcion", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
+					->selectRaw('GROUP_CONCAT(categoria.nombre) as catenombre')
+					->get());
+
+		} else {
+
+			echo json_encode($pelicula->join("peliculaporcategoria", "pelicula.id_pelicula", "=", "peliculaporcategoria.id_pelicula")->join("categoria", "peliculaporcategoria.id_categoria", "=", "categoria.id_categoria")->where("pelicula.nombre", $nombre)->groupBy("pelicula.id_pelicula")
+					->select("pelicula.id_pelicula", "pelicula.nombre", "pelicula.descripcion", "pelicula.ruta_caratula", "pelicula.duracion", "pelicula.rutatrailer", "pelicula.fecha_estreno", "pelicula.visto")
+					->selectRaw('GROUP_CONCAT(categoria.nombre) as catenombre')
+					->get());
+
+		}
+
 	}
 
 }

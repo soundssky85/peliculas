@@ -59,7 +59,9 @@ var vm1 = new Vue({
 		},
 		dataTable:"",
 		categoriafiltrada:"",
+		nombrefiltrado:"",
 		fechaverifica:[],
+		nombres:[],
 		rate:0,
 		id_peli:0
 	},
@@ -176,6 +178,25 @@ var vm1 = new Vue({
     });
 
 		},
+		filtranombre: function(){
+
+
+		 let formData = new FormData();
+     formData.append('nombre', this.nombrefiltrado);
+
+     this.$http.post(rutaraiz+'/controladores/mitest.php',formData)
+     .then(function (response) {
+
+        this.totalpeliculas=response.body;
+
+
+        console.log(response.body);
+
+     }, function(){
+	        console.log('Error!');
+    });
+
+		},
 		agvisto: function(id_pelicula,vistas){
 
 
@@ -243,6 +264,7 @@ var vm1 = new Vue({
         var fechaini = new Date(yyyy+"-"+mm+"-"+dd);
 				
 				var z = [];
+				var n = [];
 
         const entries = Object.entries(this.totalpeliculas1);
 
@@ -260,10 +282,14 @@ var vm1 = new Vue({
 					
 					}
 
+					n.push(entries[i][1].nombre);
+
+
 				}
 
 
-				this.fechaverifica = z;				
+				this.fechaverifica = z;
+				this.nombres = n;				
 
 
         setTimeout(() => {
